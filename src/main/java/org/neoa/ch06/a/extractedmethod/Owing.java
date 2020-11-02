@@ -19,11 +19,11 @@ public class Owing {
     }
 
     private int calculateOutstanding(Invoice invoice) {
-        int outstanding = 0;
+        int result = 0;
         for (Order order: invoice.getOrders()) {
-            outstanding += order.getAmount();
+            result += order.getAmount();
         }
-        return outstanding;
+        return result;
     }
 
     private void recordDueDate(Invoice invoice) {
