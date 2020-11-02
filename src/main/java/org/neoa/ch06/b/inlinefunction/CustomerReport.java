@@ -9,11 +9,8 @@ public class CustomerReport {
         Map<String, String> lines = new HashMap<>();
         lines.computeIfAbsent("name", name -> customer.getName());
         lines.computeIfAbsent("location",  location -> customer.getLocation());
-        gatherCustomerData(lines, customer);
         return lines;
     }
 
-    private void gatherCustomerData(Map<String, String> out, Customer customer) {
-    }
 
 }
