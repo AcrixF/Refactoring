@@ -14,12 +14,16 @@ public class Owing {
             outstanding += order.getAmount();
         }
 
-        LocalDate today = Clock.today();
-        invoice.setDueDate(today.plusDays(30));
+        recordDueDate(invoice);
 
         result = addDetails(invoice, result, outstanding);
 
         return result;
+    }
+
+    private void recordDueDate(Invoice invoice) {
+        LocalDate today = Clock.today();
+        invoice.setDueDate(today.plusDays(30));
     }
 
     private String addDetails(Invoice invoice, String result, int outstanding) {
