@@ -1,4 +1,4 @@
-package org.neoa.ch06.b.inlinefunction;
+package org.neoa.ch06.b.inlinefunction.simplecase;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
