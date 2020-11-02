@@ -7,19 +7,23 @@ public class Owing {
     public String printOwing(Invoice invoice) {
         String result = "";
 
-
         result = addBanner(result);
 
-        int outstanding = 0;
-        for (Order order: invoice.getOrders()) {
-            outstanding += order.getAmount();
-        }
+        int outstanding = calculateOutstanding(invoice);
 
         recordDueDate(invoice);
 
         result = addDetails(invoice, result, outstanding);
 
         return result;
+    }
+
+    private int calculateOutstanding(Invoice invoice) {
+        int outstanding = 0;
+        for (Order order: invoice.getOrders()) {
+            outstanding += order.getAmount();
+        }
+        return outstanding;
     }
 
     private void recordDueDate(Invoice invoice) {
