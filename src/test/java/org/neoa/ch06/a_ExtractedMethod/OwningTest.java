@@ -3,6 +3,9 @@ package org.neoa.ch06.a_ExtractedMethod;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.neoa.ch06.a.extractedmethod.Invoice;
+import org.neoa.ch06.a.extractedmethod.Order;
+import org.neoa.ch06.a.extractedmethod.Owing;
 
 import java.time.LocalDate;
 import java.util.List;
