@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Owing {
 
-    public String printOwning(Invoice invoice) {
+    public String printOwing(Invoice invoice) {
         String result = "";
         int outstanding = 0;
 

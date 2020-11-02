@@ -27,7 +27,7 @@ class OwningTest {
         Invoice invoice = new Invoice()
                 .setCustomer("BigOC");
 
-        String result = owing.printOwning(invoice);
+        String result = owing.printOwing(invoice);
 
         assertThat(result).isNotNull();
         assertThat(invoice.getDueDate()).isNotNull();
@@ -44,7 +44,7 @@ class OwningTest {
                                 new Order().setAmount(3400),
                                 new Order().setAmount(1250)));
 
-        String result =  owing.printOwning(invoice);
+        String result = owing.printOwing(invoice);
 
         Approvals.verify(result);
     }
