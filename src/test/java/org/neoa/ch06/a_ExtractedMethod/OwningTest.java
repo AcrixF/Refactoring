@@ -4,7 +4,10 @@ import org.approvaltests.Approvals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class OwningTest {
 
@@ -13,6 +16,19 @@ class OwningTest {
     @BeforeEach
     void setUp() {
         owing = new Owing();
+    }
+
+    @Test
+    void printOwningFinishedSuccessWhenOrdersIsEmpty() {
+
+        Invoice invoice = new Invoice()
+                .setCustomer("BigOC");
+
+        String result = owing.printOwning(invoice);
+
+        assertThat(result).isNotNull();
+        assertThat(invoice.getDueDate()).isNotNull();
+        assertThat(invoice.getDueDate()).isEqualTo(LocalDate.now().plusDays(30));
     }
 
     @Test
