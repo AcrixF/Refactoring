@@ -6,10 +6,11 @@ public class Owing {
 
     public String printOwing(Invoice invoice) {
         String result = "";
-        int outstanding = 0;
+
 
         result = addBanner(result);
 
+        int outstanding = 0;
         for (Order order: invoice.getOrders()) {
             outstanding += order.getAmount();
         }
