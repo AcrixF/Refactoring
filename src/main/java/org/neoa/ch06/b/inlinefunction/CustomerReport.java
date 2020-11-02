@@ -7,12 +7,12 @@ public class CustomerReport {
 
     public Map<String, String> reportLines(Customer customer) {
         Map<String, String> lines = new HashMap<>();
+        lines.computeIfAbsent("name", name -> customer.getName());
         gatherCustomerData(lines, customer);
         return lines;
     }
 
     private void gatherCustomerData(Map<String, String> out, Customer customer) {
-        out.computeIfAbsent("name", name -> customer.getName());
         out.computeIfAbsent("location",  location -> customer.getLocation());
     }
 
