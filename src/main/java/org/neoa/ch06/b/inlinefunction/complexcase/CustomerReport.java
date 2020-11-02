@@ -1,4 +1,4 @@
-package org.neoa.ch06.b.inlinefunction;
+package org.neoa.ch06.b.inlinefunction.complexcase;
 
 import java.util.HashMap;
 import java.util.Map;

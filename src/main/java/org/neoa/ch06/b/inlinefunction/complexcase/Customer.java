@@ -1,4 +1,4 @@
-package org.neoa.ch06.b.inlinefunction;
+package org.neoa.ch06.b.inlinefunction.complexcase;
 
 import lombok.Getter;
 import lombok.Setter;
