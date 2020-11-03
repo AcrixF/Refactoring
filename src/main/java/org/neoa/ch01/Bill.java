@@ -9,17 +9,23 @@ import static org.neoa.ch01.PlayType.COMEDY;
 public class Bill {
 
     public String statement (Invoice invoice, Map<String, Play> plays) {
-        double totalAmount = 0;
         String result = "Statement for " + invoice.getCustomer() + "\n";
 
         for (Performance performance: invoice.getPerformances()) {
             result += " " + playFor(performance, plays).getName() +": " + usd(amountFor(performance, plays)) + " " + performance.getAudience() + " seats\n";
-            totalAmount += amountFor(performance, plays);
         }
 
-        result += "Amount owed is " + usd(totalAmount) + "\n";
+        result += "Amount owed is " + usd(totalAmount(invoice, plays)) + "\n";
         result += "You earned " + totalVolumeCredits(invoice, plays) + " credits\n";
         return result;
+    }
+
+    private double totalAmount(Invoice invoice, Map<String, Play> plays) {
+        double totalAmount = 0;
+        for (Performance performance: invoice.getPerformances()) {
+            totalAmount += amountFor(performance, plays);
+        }
+        return totalAmount;
     }
 
     private int totalVolumeCredits(Invoice invoice, Map<String, Play> plays) {
