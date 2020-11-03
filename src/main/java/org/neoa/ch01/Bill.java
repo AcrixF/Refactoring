@@ -17,18 +17,18 @@ public class Bill {
 
             volumeCredits += volumeCreditsFor(plays, performance);
 
-            result += " " + playFor(performance, plays).getName() +": " + format(amountFor(performance, plays) /100) + " " + performance.getAudience() + " seats\n";
+            result += " " + playFor(performance, plays).getName() +": " + usd(amountFor(performance, plays) /100) + " " + performance.getAudience() + " seats\n";
             totalAmount += amountFor(performance, plays);
         }
-        result += "Amount owed is " + format(totalAmount/100) + "\n";
+        result += "Amount owed is " + usd(totalAmount/100) + "\n";
         result += "You earned " + volumeCredits +" credits\n";
         return result;
     }
 
-    private String format(double number) {
-        NumberFormat numberFormat = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
-        numberFormat.setMinimumFractionDigits(2);
-        return numberFormat.format(number);
+    private String usd(double number) {
+        NumberFormat currencyInstance = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
+        currencyInstance.setMinimumFractionDigits(2);
+        return currencyInstance.format(number);
     }
 
     private int volumeCreditsFor(Map<String, Play> plays, Performance performance) {
