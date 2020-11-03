@@ -10,7 +10,6 @@ public class Bill {
 
     public String statement (Invoice invoice, Map<String, Play> plays) {
         double totalAmount = 0;
-        int volumeCredits = 0;
         String result = "Statement for " + invoice.getCustomer() + "\n";
 
         for (Performance performance: invoice.getPerformances()) {
@@ -18,14 +17,17 @@ public class Bill {
             totalAmount += amountFor(performance, plays);
         }
 
+        result += "Amount owed is " + usd(totalAmount) + "\n";
+        result += "You earned " + totalVolumeCredits(invoice, plays) + " credits\n";
+        return result;
+    }
+
+    private int totalVolumeCredits(Invoice invoice, Map<String, Play> plays) {
+        int volumeCredits = 0;
         for (Performance performance: invoice.getPerformances()) {
             volumeCredits += volumeCreditsFor(plays, performance);
-
         }
-
-        result += "Amount owed is " + usd(totalAmount) + "\n";
-        result += "You earned " + volumeCredits + " credits\n";
-        return result;
+        return volumeCredits;
     }
 
     private String usd(double number) {
