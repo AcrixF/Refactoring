@@ -19,13 +19,11 @@ public class Bill {
 
         for (Performance performance: invoice.getPerformances()) {
 
-            double thisAmount = amountFor(performance, plays);
-
             volumeCredits += Math.max(performance.getAudience() - 30, 0);
             if (COMEDY == playFor(performance, plays).getType()) volumeCredits += Math.floor(performance.getAudience() / 5);
 
-            result += " " + playFor(performance, plays).getName() +": " + format.format(thisAmount/100) + " " + performance.getAudience() + " seats\n";
-            totalAmount += thisAmount;
+            result += " " + playFor(performance, plays).getName() +": " + format.format(amountFor(performance, plays) /100) + " " + performance.getAudience() + " seats\n";
+            totalAmount += amountFor(performance, plays);
         }
         result += "Amount owed is " + format.format(totalAmount/100) + "\n";
         result += "You earned " + volumeCredits +" credits\n";
