@@ -9,6 +9,10 @@ import static org.neoa.ch01.PlayType.COMEDY;
 public class Bill {
 
     public String statement (Invoice invoice, Map<String, Play> plays) {
+        return renderPlainText(invoice, plays);
+    }
+
+    public String renderPlainText (Invoice invoice, Map<String, Play> plays) {
         String result = "Statement for " + invoice.getCustomer() + "\n";
 
         for (Performance performance: invoice.getPerformances()) {
@@ -21,19 +25,19 @@ public class Bill {
     }
 
     private double totalAmount(Invoice invoice, Map<String, Play> plays) {
-        double totalAmount = 0;
+        double result = 0;
         for (Performance performance: invoice.getPerformances()) {
-            totalAmount += amountFor(performance, plays);
+            result += amountFor(performance, plays);
         }
-        return totalAmount;
+        return result;
     }
 
     private int totalVolumeCredits(Invoice invoice, Map<String, Play> plays) {
-        int volumeCredits = 0;
+        int result = 0;
         for (Performance performance: invoice.getPerformances()) {
-            volumeCredits += volumeCreditsFor(plays, performance);
+            result += volumeCreditsFor(plays, performance);
         }
-        return volumeCredits;
+        return result;
     }
 
     private String usd(double number) {
@@ -43,10 +47,10 @@ public class Bill {
     }
 
     private int volumeCreditsFor(Map<String, Play> plays, Performance performance) {
-        int volumeCredits = 0;
-        volumeCredits += Math.max(performance.getAudience() - 30, 0);
-        if (COMEDY == playFor(performance, plays).getType()) volumeCredits += Math.floor(performance.getAudience() / 5);
-        return volumeCredits;
+        int result = 0;
+        result += Math.max(performance.getAudience() - 30, 0);
+        if (COMEDY == playFor(performance, plays).getType()) result += Math.floor(performance.getAudience() / 5);
+        return result;
     }
 
     private double amountFor(Performance performance, Map<String, Play> plays) {
