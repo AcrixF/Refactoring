@@ -18,14 +18,13 @@ public class Bill {
         format.setMinimumFractionDigits(2);
 
         for (Performance performance: invoice.getPerformances()) {
-            Play play = plays.get(performance.getPlayID());
 
-            double thisAmount = amountFor(performance, play);
+            double thisAmount = amountFor(performance, playFor(performance, plays));
 
             volumeCredits += Math.max(performance.getAudience() - 30, 0);
-            if (COMEDY == play.getType()) volumeCredits += Math.floor(performance.getAudience() / 5);
+            if (COMEDY == playFor(performance, plays).getType()) volumeCredits += Math.floor(performance.getAudience() / 5);
 
-            result += " " + play.getName() +": " + format.format(thisAmount/100) + " " + performance.getAudience() + " seats\n";
+            result += " " + playFor(performance, plays).getName() +": " + format.format(thisAmount/100) + " " + performance.getAudience() + " seats\n";
             totalAmount += thisAmount;
         }
         result += "Amount owed is " + format.format(totalAmount/100) + "\n";
@@ -54,6 +53,10 @@ public class Bill {
                 throw new RuntimeException("unknown type " + play.getType());
         }
         return result;
+    }
+
+    private Play playFor(Performance performance, Map<String, Play> plays) {
+        return plays.get(performance.getPlayID());
     }
 
 }
