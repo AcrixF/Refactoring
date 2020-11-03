@@ -19,8 +19,7 @@ public class Bill {
 
         for (Performance performance: invoice.getPerformances()) {
 
-            volumeCredits += Math.max(performance.getAudience() - 30, 0);
-            if (COMEDY == playFor(performance, plays).getType()) volumeCredits += Math.floor(performance.getAudience() / 5);
+            volumeCredits += volumeCreditsFor(plays, performance);
 
             result += " " + playFor(performance, plays).getName() +": " + format.format(amountFor(performance, plays) /100) + " " + performance.getAudience() + " seats\n";
             totalAmount += amountFor(performance, plays);
@@ -28,6 +27,13 @@ public class Bill {
         result += "Amount owed is " + format.format(totalAmount/100) + "\n";
         result += "You earned " + volumeCredits +" credits\n";
         return result;
+    }
+
+    private int volumeCreditsFor(Map<String, Play> plays, Performance performance) {
+        int volumeCredits = 0;
+        volumeCredits += Math.max(performance.getAudience() - 30, 0);
+        if (COMEDY == playFor(performance, plays).getType()) volumeCredits += Math.floor(performance.getAudience() / 5);
+        return volumeCredits;
     }
 
     private double amountFor(Performance performance, Map<String, Play> plays) {
