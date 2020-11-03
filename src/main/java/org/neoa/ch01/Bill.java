@@ -19,7 +19,7 @@ public class Bill {
 
         for (Performance performance: invoice.getPerformances()) {
 
-            double thisAmount = amountFor(performance, playFor(performance, plays));
+            double thisAmount = amountFor(performance, plays);
 
             volumeCredits += Math.max(performance.getAudience() - 30, 0);
             if (COMEDY == playFor(performance, plays).getType()) volumeCredits += Math.floor(performance.getAudience() / 5);
@@ -32,9 +32,9 @@ public class Bill {
         return result;
     }
 
-    private double amountFor(Performance performance, Play play) {
+    private double amountFor(Performance performance, Map<String, Play> plays) {
         double result = 0;
-        switch (play.getType()) {
+        switch (playFor(performance, plays).getType()) {
             case TRAGEDY:
                 result = 40000;
                 if (performance.getAudience() > 30) {
@@ -50,7 +50,7 @@ public class Bill {
                 result += 300 * performance.getAudience();
                 break;
             default:
-                throw new RuntimeException("unknown type " + play.getType());
+                throw new RuntimeException("unknown type " + playFor(performance, plays));
         }
         return result;
     }
