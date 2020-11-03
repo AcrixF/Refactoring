@@ -14,21 +14,24 @@ public class Bill {
         String result = "Statement for " + invoice.getCustomer() + "\n";
 
         for (Performance performance: invoice.getPerformances()) {
-
-            volumeCredits += volumeCreditsFor(plays, performance);
-
-            result += " " + playFor(performance, plays).getName() +": " + usd(amountFor(performance, plays) /100) + " " + performance.getAudience() + " seats\n";
+            result += " " + playFor(performance, plays).getName() +": " + usd(amountFor(performance, plays)) + " " + performance.getAudience() + " seats\n";
             totalAmount += amountFor(performance, plays);
         }
-        result += "Amount owed is " + usd(totalAmount/100) + "\n";
-        result += "You earned " + volumeCredits +" credits\n";
+
+        for (Performance performance: invoice.getPerformances()) {
+            volumeCredits += volumeCreditsFor(plays, performance);
+
+        }
+
+        result += "Amount owed is " + usd(totalAmount) + "\n";
+        result += "You earned " + volumeCredits + " credits\n";
         return result;
     }
 
     private String usd(double number) {
         NumberFormat currencyInstance = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
         currencyInstance.setMinimumFractionDigits(2);
-        return currencyInstance.format(number);
+        return currencyInstance.format(number / 100);
     }
 
     private int volumeCreditsFor(Map<String, Play> plays, Performance performance) {
