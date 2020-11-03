@@ -9,32 +9,36 @@ import static org.neoa.ch01.PlayType.COMEDY;
 public class Bill {
 
     public String statement (Invoice invoice, Map<String, Play> plays) {
-        return renderPlainText(invoice, plays);
+        StatementData statementData = new StatementData()
+                .setCustomer(invoice.getCustomer())
+                .setPerformances(invoice.getPerformances());
+
+        return renderPlainText(statementData, plays);
     }
 
-    public String renderPlainText (Invoice invoice, Map<String, Play> plays) {
-        String result = "Statement for " + invoice.getCustomer() + "\n";
+    public String renderPlainText (StatementData data, Map<String, Play> plays) {
+        String result = "Statement for " + data.getCustomer() + "\n";
 
-        for (Performance performance: invoice.getPerformances()) {
+        for (Performance performance: data.getPerformances()) {
             result += " " + playFor(performance, plays).getName() +": " + usd(amountFor(performance, plays)) + " " + performance.getAudience() + " seats\n";
         }
 
-        result += "Amount owed is " + usd(totalAmount(invoice, plays)) + "\n";
-        result += "You earned " + totalVolumeCredits(invoice, plays) + " credits\n";
+        result += "Amount owed is " + usd(totalAmount(data, plays)) + "\n";
+        result += "You earned " + totalVolumeCredits(data, plays) + " credits\n";
         return result;
     }
 
-    private double totalAmount(Invoice invoice, Map<String, Play> plays) {
+    private double totalAmount(StatementData data, Map<String, Play> plays) {
         double result = 0;
-        for (Performance performance: invoice.getPerformances()) {
+        for (Performance performance: data.getPerformances()) {
             result += amountFor(performance, plays);
         }
         return result;
     }
 
-    private int totalVolumeCredits(Invoice invoice, Map<String, Play> plays) {
+    private int totalVolumeCredits(StatementData data, Map<String, Play> plays) {
         int result = 0;
-        for (Performance performance: invoice.getPerformances()) {
+        for (Performance performance: data.getPerformances()) {
             result += volumeCreditsFor(plays, performance);
         }
         return result;
