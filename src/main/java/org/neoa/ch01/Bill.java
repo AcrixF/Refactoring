@@ -19,26 +19,9 @@ public class Bill {
 
         for (Performance performance: invoice.getPerformances()) {
             Play play = plays.get(performance.getPlayID());
-            double thisAmount = 0;
 
-            switch (play.getType()) {
-                case TRAGEDY:
-                    thisAmount = 40000;
-                    if (performance.getAudience() > 30) {
-                        thisAmount += 1000 * (performance.getAudience() - 30);
-                    }
-                    break;
+            double thisAmount = amountFor(performance, play);
 
-                case COMEDY:
-                    thisAmount = 30000;
-                    if (performance.getAudience() > 20) {
-                        thisAmount += 10000 + 500 * (performance.getAudience() - 20);
-                    }
-                    thisAmount += 300 * performance.getAudience();
-                    break;
-                default:
-                    throw new RuntimeException("unknown type " + play.getType());
-            }
             volumeCredits += Math.max(performance.getAudience() - 30, 0);
             if (COMEDY == play.getType()) volumeCredits += Math.floor(performance.getAudience() / 5);
 
@@ -48,6 +31,29 @@ public class Bill {
         result += "Amount owed is " + format.format(totalAmount/100) + "\n";
         result += "You earned " + volumeCredits +" credits\n";
         return result;
+    }
+
+    private double amountFor(Performance performance, Play play) {
+        double thisAmount = 0;
+        switch (play.getType()) {
+            case TRAGEDY:
+                thisAmount = 40000;
+                if (performance.getAudience() > 30) {
+                    thisAmount += 1000 * (performance.getAudience() - 30);
+                }
+                break;
+
+            case COMEDY:
+                thisAmount = 30000;
+                if (performance.getAudience() > 20) {
+                    thisAmount += 10000 + 500 * (performance.getAudience() - 20);
+                }
+                thisAmount += 300 * performance.getAudience();
+                break;
+            default:
+                throw new RuntimeException("unknown type " + play.getType());
+        }
+        return thisAmount;
     }
 
 }
