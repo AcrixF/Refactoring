@@ -13,20 +13,22 @@ public class Bill {
         int volumeCredits = 0;
         String result = "Statement for " + invoice.getCustomer() + "\n";
 
-        Locale locale = new Locale("en", "US");
-        NumberFormat format = NumberFormat.getCurrencyInstance(locale);
-        format.setMinimumFractionDigits(2);
-
         for (Performance performance: invoice.getPerformances()) {
 
             volumeCredits += volumeCreditsFor(plays, performance);
 
-            result += " " + playFor(performance, plays).getName() +": " + format.format(amountFor(performance, plays) /100) + " " + performance.getAudience() + " seats\n";
+            result += " " + playFor(performance, plays).getName() +": " + format(amountFor(performance, plays) /100) + " " + performance.getAudience() + " seats\n";
             totalAmount += amountFor(performance, plays);
         }
-        result += "Amount owed is " + format.format(totalAmount/100) + "\n";
+        result += "Amount owed is " + format(totalAmount/100) + "\n";
         result += "You earned " + volumeCredits +" credits\n";
         return result;
+    }
+
+    private String format(double number) {
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
+        numberFormat.setMinimumFractionDigits(2);
+        return numberFormat.format(number);
     }
 
     private int volumeCreditsFor(Map<String, Play> plays, Performance performance) {
