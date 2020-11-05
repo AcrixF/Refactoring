@@ -1,11 +1,8 @@
-package org.neoa.ch06.a.extractedmethod;
+package org.neoa.ch06.a.extractfunction;
 
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.neoa.ch06.a.en.Invoice;
-import org.neoa.ch06.a.en.Order;
-import org.neoa.ch06.a.en.Owing;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -36,8 +33,11 @@ class OwningTest {
 
     @Test
     void printOwningFinishedSuccessfulWhenNoErrorsOccur() {
+        LocalDate localDate = LocalDate.parse("2020-12-04");
+
         Invoice invoice = new Invoice()
                 .setCustomer("BigOC")
+                .setDueDate(localDate)
                 .setOrders(
                         List.of(
                                 new Order().setAmount(1000),

@@ -2,8 +2,6 @@ package org.neoa.ch06.c.extractvariable;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.neoa.ch06.c.ev.Order;
-import org.neoa.ch06.c.ev.OrderCalculation;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

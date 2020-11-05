@@ -1,9 +1,7 @@
-package org.neoa.ch06.b.inlinefunction;
+package org.neoa.ch06.b.inlinefunction.complexcase;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.neoa.ch06.b.inlinefunction.complexcase.Customer;
-import org.neoa.ch06.b.inlinefunction.complexcase.CustomerReport;
 
 import java.util.Map;
 
