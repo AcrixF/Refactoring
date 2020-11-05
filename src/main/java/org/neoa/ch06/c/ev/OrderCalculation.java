@@ -1,4 +1,4 @@
-package org.neoa.ch06.c.extractvariable;
+package org.neoa.ch06.c.ev;
 
 public class OrderCalculation {
 

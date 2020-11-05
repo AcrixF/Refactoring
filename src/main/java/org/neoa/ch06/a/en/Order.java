@@ -1,4 +1,4 @@
-package org.neoa.ch06.c.extractvariable;
+package org.neoa.ch06.a.en;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +9,5 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class Order {
 
-    private int quantity;
-    private double itemPrice;
+    private int amount;
 }

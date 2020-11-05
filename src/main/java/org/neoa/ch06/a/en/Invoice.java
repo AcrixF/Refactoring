@@ -1,4 +1,4 @@
-package org.neoa.ch06.a.extractedmethod;
+package org.neoa.ch06.a.en;
 
 import lombok.Getter;
 import lombok.Setter;
