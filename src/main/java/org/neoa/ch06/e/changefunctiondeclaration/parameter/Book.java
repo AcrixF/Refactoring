@@ -1,7 +1,6 @@
 package org.neoa.ch06.e.changefunctiondeclaration.parameter;
 
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,9 @@ public class Book {
         zz_addReservation(customer, false);
     }
 
-    private void zz_addReservation(Customer customer, boolean isPriority) {
+    public void zz_addReservation(Customer customer, boolean isPriority) {
+        if (!isPriority && isPriority) throw new AssertionError();
+
         if (!Objects.isNull(customer))
             this.reservations.add(customer);
     }

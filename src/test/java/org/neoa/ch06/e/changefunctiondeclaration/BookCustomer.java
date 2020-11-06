@@ -19,7 +19,7 @@ public class BookCustomer {
     @Test
     void addReservationFinishedSuccessfulWhenNoErrorsOccurs() {
 
-        book.addReservation(new Customer());
+        book.zz_addReservation(new Customer(), false);
 
         assertThat(book.getReservations()).isNotEmpty();
     }
@@ -27,7 +27,7 @@ public class BookCustomer {
     @Test
     void addReservationFinishedSuccessfulWhenNoCustomerExist() {
 
-        book.addReservation(null);
+        book.zz_addReservation(null, true);
 
         assertThat(book.getReservations()).isEmpty();
     }
