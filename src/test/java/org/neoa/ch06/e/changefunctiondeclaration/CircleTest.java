@@ -15,9 +15,9 @@ class CircleTest {
     }
 
     @Test
-    void circumReturnsExpectedWhenNoErrorsOccurs() {
+    void circumferenceReturnsExpectedWhenNoErrorsOccurs() {
 
-        double circumference = circle.circum(3);
+        double circumference = circle.circumference(3);
 
         assertThat(circumference).isEqualTo(18.84955592153876);
 
