@@ -6,7 +6,7 @@ public class Circle {
         return circumference(radius);
     }
 
-    private double circumference(double radius) {
+    public double circumference(double radius) {
         return 2 * Math.PI * radius;
     }
 }
