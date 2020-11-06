@@ -11,10 +11,6 @@ public class Book {
 
     private List<Customer> reservations = new ArrayList<>();
 
-    public void addReservation(Customer customer) {
-        zz_addReservation(customer, false);
-    }
-
     public void zz_addReservation(Customer customer, boolean isPriority) {
         if (!isPriority && isPriority) throw new AssertionError();
 
