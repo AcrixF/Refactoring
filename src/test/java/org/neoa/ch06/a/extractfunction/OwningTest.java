@@ -33,11 +33,11 @@ class OwningTest {
 
     @Test
     void printOwningFinishedSuccessfulWhenNoErrorsOccur() {
-        LocalDate localDate = LocalDate.parse("2020-12-04");
+        LocalDate dueDate = LocalDate.parse("2020-12-04");
 
         Invoice invoice = new Invoice()
                 .setCustomer("BigOC")
-                .setDueDate(localDate)
+                .setDueDate(dueDate)
                 .setOrders(
                         List.of(
                                 new Order().setAmount(1000),
