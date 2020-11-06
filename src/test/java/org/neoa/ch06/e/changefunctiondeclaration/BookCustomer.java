@@ -18,11 +18,18 @@ public class BookCustomer {
 
     @Test
     void addReservationFinishedSuccessfulWhenNoErrorsOccurs() {
-        Customer customer = new Customer();
 
-        book.addReservation(customer);
+        book.addReservation(new Customer());
 
         assertThat(book.getReservations()).isNotEmpty();
+    }
+
+    @Test
+    void addReservationFinishedSuccessfulWhenNoCustomerExist() {
+
+        book.addReservation(null);
+
+        assertThat(book.getReservations()).isEmpty();
     }
 
 }
