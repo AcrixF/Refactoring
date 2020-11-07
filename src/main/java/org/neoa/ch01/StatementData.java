@@ -11,5 +11,5 @@ import java.util.List;
 @Accessors(chain = true)
 public class StatementData {
     private String customer;
-    private List<Performance> performances;
+    private List<? extends Performance> performances;
 }

@@ -1,4 +1,4 @@
-package org.neoa.ch06.e.changefunctiondeclaration;
+package org.neoa.ch06.e.changefunctiondeclaration.simplemechanics;
 
 public class Circle {
 

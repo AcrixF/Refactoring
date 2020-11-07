@@ -18,8 +18,12 @@ public class Bill {
     }
 
     private Performance enrichPerformance(Performance performance) {
-        return new Performance().setAudience(performance.getAudience())
-                .setPlayID(performance.getPlayID());
+        EnrichPerformance enrichPerformance = new EnrichPerformance();
+        enrichPerformance.setAudience(performance.getAudience());
+        enrichPerformance.setPlayID(performance.getPlayID());
+        return enrichPerformance;
+
+
     }
 
 
@@ -27,7 +31,7 @@ public class Bill {
         String result = "Statement for " + data.getCustomer() + "\n";
 
         for (Performance performance: data.getPerformances()) {
-            result += " " + playFor(performance, plays).getName() +": " + usd(amountFor(performance, plays)) + " " + performance.getAudience() + " seats\n";
+            result += " " + playFor(performance, plays).getName() + ": " + usd(amountFor(performance, plays)) + " " + performance.getAudience() + " seats\n";
         }
 
         result += "Amount owed is " + usd(totalAmount(data, plays)) + "\n";

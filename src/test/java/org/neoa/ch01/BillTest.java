@@ -24,13 +24,23 @@ class BillTest {
                 "as-like", new Play().setName("As You Like It").setType(PlayType.COMEDY),
                 "othello", new Play().setName("Othello").setType(PlayType.TRAGEDY));
 
+        Performance performanceOne =  new Performance();
+        performanceOne.setPlayID("hamlet");
+        performanceOne.setAudience(55);
+
+        Performance performanceTwo = new Performance();
+        performanceTwo.setPlayID("as-like");
+        performanceTwo.setAudience(35);
+
+        Performance performanceThree = new Performance();
+        performanceThree.setPlayID("othello");
+        performanceThree.setAudience(40);
+
+
         Invoice invoice = new Invoice()
                 .setCustomer("BigCo")
                 .setPerformances(
-                        List.of(
-                                new Performance().setPlayID("hamlet").setAudience(55),
-                                new Performance().setPlayID("as-like").setAudience(35),
-                                new Performance().setPlayID("othello").setAudience(40)));
+                        List.of(performanceOne, performanceTwo, performanceThree));
 
         String result = bill.statement(invoice, plays);
 

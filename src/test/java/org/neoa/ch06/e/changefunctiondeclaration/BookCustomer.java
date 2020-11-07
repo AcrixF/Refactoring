@@ -2,8 +2,8 @@ package org.neoa.ch06.e.changefunctiondeclaration;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.neoa.ch06.e.changefunctiondeclaration.parameter.Book;
-import org.neoa.ch06.e.changefunctiondeclaration.parameter.Customer;
+import org.neoa.ch06.e.changefunctiondeclaration.migrationmechanics.Book;
+import org.neoa.ch06.e.changefunctiondeclaration.migrationmechanics.Customer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,7 +19,7 @@ public class BookCustomer {
     @Test
     void addReservationFinishedSuccessfulWhenNoErrorsOccurs() {
 
-        book.zz_addReservation(new Customer(), false);
+        book.addReservation(new Customer(), false);
 
         assertThat(book.getReservations()).isNotEmpty();
     }
@@ -27,7 +27,7 @@ public class BookCustomer {
     @Test
     void addReservationFinishedSuccessfulWhenNoCustomerExist() {
 
-        book.zz_addReservation(null, true);
+        book.addReservation(null, true);
 
         assertThat(book.getReservations()).isEmpty();
     }

@@ -2,6 +2,7 @@ package org.neoa.ch06.e.changefunctiondeclaration;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.neoa.ch06.e.changefunctiondeclaration.simplemechanics.Circle;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

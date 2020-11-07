@@ -1,4 +1,4 @@
-package org.neoa.ch06.e.changefunctiondeclaration.parameter;
+package org.neoa.ch06.e.changefunctiondeclaration.migrationmechanics;
 
 import lombok.Getter;
 
@@ -11,7 +11,7 @@ public class Book {
 
     private List<Customer> reservations = new ArrayList<>();
 
-    public void zz_addReservation(Customer customer, boolean isPriority) {
+    public void addReservation(Customer customer, boolean isPriority) {
         if (!isPriority && isPriority) throw new AssertionError();
 
         if (!Objects.isNull(customer))
