@@ -19,7 +19,7 @@ class CustomerServiceTest {
         Customer customer = new Customer()
                 .setAddress(new Address().setState("MA"));
 
-        boolean newEnglanders = customerService.inNewEngland(customer);
+        boolean newEnglanders = customerService.xxNEWinNewEngland(customer.getAddress().getState());
 
         assertThat(newEnglanders).isTrue();
     }

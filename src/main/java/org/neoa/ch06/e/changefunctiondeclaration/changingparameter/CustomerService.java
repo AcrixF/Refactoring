@@ -10,7 +10,7 @@ public class CustomerService {
         return xxNEWinNewEngland(customer.getAddress().getState());
     }
 
-    private boolean xxNEWinNewEngland(String stateCode) {
+    public boolean xxNEWinNewEngland(String stateCode) {
         return states.contains(stateCode);
     }
 }
