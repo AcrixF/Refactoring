@@ -10,22 +10,20 @@ import static org.neoa.ch01.PlayType.COMEDY;
 public class Bill {
 
     public String statement (Invoice invoice, Map<String, Play> plays) {
+
+        PerformanceEnricher performanceEnricher = new PerformanceEnricher();
+
         StatementData statementData = new StatementData()
                 .setCustomer(invoice.getCustomer())
-                .setPerformances(invoice.getPerformances().stream().map(this::enrichPerformance).collect(Collectors.toList()));
+                .setPerformances(invoice.getPerformances().stream().map(p -> performanceEnricher.enrichPerformance(p, plays)).collect(Collectors.toList()));
 
         return renderPlainText(statementData, plays);
     }
 
-    private Performance enrichPerformance(Performance performance) {
-        EnrichPerformance enrichPerformance = new EnrichPerformance();
-        enrichPerformance.setAudience(performance.getAudience());
-        enrichPerformance.setPlayID(performance.getPlayID());
-        return enrichPerformance;
 
-
+    private Play playFor(Performance performance, Map<String, Play> plays) {
+        return plays.get(performance.getPlayID());
     }
-
 
     private String renderPlainText (StatementData data, Map<String, Play> plays) {
         String result = "Statement for " + data.getCustomer() + "\n";
@@ -85,8 +83,19 @@ public class Bill {
         }
         return result;
     }
-    private Play playFor(Performance performance, Map<String, Play> plays) {
-        return plays.get(performance.getPlayID());
+
+
+    class PerformanceEnricher {
+
+        public Performance enrichPerformance(Performance performance, Map<String, Play> plays) {
+            EnrichPerformance enrichPerformance = new EnrichPerformance();
+            enrichPerformance.setAudience(performance.getAudience());
+            enrichPerformance.setPlayID(performance.getPlayID());
+            enrichPerformance.setPlay(playFor(performance, plays));
+            return enrichPerformance;
+        }
+
     }
+
 
 }
