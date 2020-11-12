@@ -23,4 +23,15 @@ class SpaceShipTest {
 
         assertThat(spaceShip_.getDefaultOwner()).isEqualTo(spaceShip.getDefaultOwner());
     }
+
+    @Test
+    void setDefaultValuesNotControlTheVariableValue() {
+        Owner ownerOne = spaceShip.getDefaultOwner();
+        ownerOne.setLastName("Juarez");
+        Owner ownerTwo = spaceShip.getDefaultOwner();
+        ownerTwo.setFirstName("Andrea");
+
+        assertThat(spaceShip.getDefaultOwner().getFirstName()).isEqualTo("Andrea");
+        assertThat(spaceShip.getDefaultOwner().getLastName()).isEqualTo("Juarez");
+    }
 }
