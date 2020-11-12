@@ -2,14 +2,14 @@ package org.neoa.ch06.g.renamevariable;
 
 public class Paper {
 
-    private String tpHd = "untitled";
+    private String _title = "untitled";
 
     public String getTitle() {
-        return tpHd;
+        return _title;
     }
 
     public void setTitle(String title) {
-        this.tpHd = title;
+        this._title = title;
     }
 
     public String getFormattedHeader() {
