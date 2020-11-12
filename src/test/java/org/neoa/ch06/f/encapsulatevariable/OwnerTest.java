@@ -16,11 +16,11 @@ class OwnerTest {
 
     @Test
     void setOwnerPropertiesFinishedSuccessful() {
-        this.owner.firstName = "Martin";
-        this.owner.lastName = "Fowler";
+        this.owner.setFirstName("Martin");
+        this.owner.setLastName("Fowler");
 
-        assertThat(owner.firstName).isEqualTo("Martin");
-        assertThat(owner.lastName).isEqualTo("Fowler");
+        assertThat(owner.getFirstName()).isEqualTo("Martin");
+        assertThat(owner.getLastName()).isEqualTo("Fowler");
     }
 
 }
