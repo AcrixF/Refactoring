@@ -13,11 +13,11 @@ public class Paper {
     }
 
     public String getFormattedHeader() {
-        return "<h1>" + tpHd + "</h1>";
+        return "<h1>" + getTitle() + "</h1>";
     }
 
-    public void updateHeader(String header) {
-        this.tpHd = header;
+    public void extractTitle(String text) {
+        String [] words = text.split(",");
+        setTitle(words[0]);
     }
-
 }

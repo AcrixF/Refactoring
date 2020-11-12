@@ -19,4 +19,16 @@ class PaperTest {
         String result = paper.getFormattedHeader();
         assertThat(result).isNotNull();
     }
+
+    @Test
+    void extractTitleSetTitleValueCorrectly() {
+        String text = "BigFoot found in Mexico, the mythical creature";
+
+        paper.extractTitle(text);
+
+        String header = paper.getTitle();
+
+        assertThat(header).isEqualTo("BigFoot found in Mexico");
+
+    }
 }
