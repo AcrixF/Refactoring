@@ -4,6 +4,14 @@ public class Paper {
 
     private String tpHd = "untitled";
 
+    public String getTitle() {
+        return tpHd;
+    }
+
+    public void setTitle(String title) {
+        this.tpHd = title;
+    }
+
     public String getFormattedHeader() {
         return "<h1>" + tpHd + "</h1>";
     }
