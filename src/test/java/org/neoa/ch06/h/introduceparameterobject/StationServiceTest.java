@@ -18,8 +18,10 @@ class StationServiceTest {
 
     @Test
     void readingsOutsideRangeReturnsEmptyListWhenNoTemperaturesOutsideRange() {
-        double min = 40;
-        double max = 60;
+        double temperatureFloor = 40;
+        double temperatureCeiling = 60;
+
+        NumberRange numberRange = new NumberRange(temperatureFloor, temperatureCeiling);
 
         Station station = new Station()
                 .setName("ZB1")
@@ -31,15 +33,17 @@ class StationServiceTest {
                         new Reading().setTemperature(51).setTime("2016-11-10 09:50")
                 ));
 
-        List<Reading> readings = stationService.readingsOutsideRange(station, min, max);
+        List<Reading> readings = stationService.readingsOutsideRange_(station, temperatureFloor, temperatureCeiling, numberRange);
 
         assertThat(readings).isEmpty();
     }
 
     @Test
     void readingsOutsideRangeReturnsListWhenThereIsTemperaturesOutsideRange() {
-        double min = 50;
-        double max = 55;
+        double temperatureFloor = 50;
+        double temperatureCeiling = 55;
+
+        NumberRange numberRange = new NumberRange(temperatureFloor, temperatureCeiling);
 
         Station station = new Station()
                 .setName("ZB1")
@@ -51,7 +55,7 @@ class StationServiceTest {
                         new Reading().setTemperature(51).setTime("2016-11-10 09:50")
                 ));
 
-        List<Reading> readings = stationService.readingsOutsideRange(station, min, max);
+        List<Reading> readings = stationService.readingsOutsideRange_(station, temperatureFloor, temperatureCeiling, numberRange);
 
         assertThat(readings).isNotEmpty();
         assertThat(readings).hasSize(2);
