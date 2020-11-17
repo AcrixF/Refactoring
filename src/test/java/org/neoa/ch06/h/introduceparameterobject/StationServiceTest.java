@@ -33,7 +33,7 @@ class StationServiceTest {
                         new Reading().setTemperature(51).setTime("2016-11-10 09:50")
                 ));
 
-        List<Reading> readings = stationService.readingsOutsideRange_(station, temperatureCeiling, numberRange);
+        List<Reading> readings = stationService.readingsOutsideRange(station, numberRange);
 
         assertThat(readings).isEmpty();
     }
@@ -55,7 +55,7 @@ class StationServiceTest {
                         new Reading().setTemperature(51).setTime("2016-11-10 09:50")
                 ));
 
-        List<Reading> readings = stationService.readingsOutsideRange_(station, temperatureCeiling, numberRange);
+        List<Reading> readings = stationService.readingsOutsideRange(station, numberRange);
 
         assertThat(readings).isNotEmpty();
         assertThat(readings).hasSize(2);
