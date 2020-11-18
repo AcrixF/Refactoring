@@ -7,7 +7,7 @@ public class StationService {
 
     public List<Reading> readingsOutsideRange(Station station, NumberRange range) {
         return station.getReadings().stream()
-                .filter(reading -> reading.getTemperature() < range.getMin() || reading.getTemperature() > range.getMax())
+                .filter(reading -> range.contains(reading.getTemperature()))
                 .collect(Collectors.toUnmodifiableList());
     }
 }

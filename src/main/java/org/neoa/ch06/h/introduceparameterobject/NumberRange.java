@@ -12,4 +12,8 @@ import lombok.experimental.Accessors;
 public class NumberRange {
     private double min;
     private double max;
+
+    public boolean contains(double value) {
+        return (value >= this.min || value <= this.max);
+    }
 }
