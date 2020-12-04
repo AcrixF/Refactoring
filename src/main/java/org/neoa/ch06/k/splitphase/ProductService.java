@@ -10,14 +10,14 @@ public class ProductService {
                 .setBasePrice(basePrice)
                 .setQuantity(quantity);
 
-        double price = applyShipping(priceData, quantity, shippingMethod, discount);
+        double price = applyShipping(priceData, shippingMethod, discount);
 
         return price;
     }
 
-    private double applyShipping(PriceData priceData, int quantity, ShippingMethod shippingMethod, double discount) {
+    private double applyShipping(PriceData priceData, ShippingMethod shippingMethod, double discount) {
         double shippingPerCase = (priceData.getBasePrice() > shippingMethod.getDiscountThreshold()) ? shippingMethod.getDiscountedFee() : shippingMethod.getFeePerCase();
-        double shippingCost = quantity * shippingPerCase;
+        double shippingCost = priceData.getQuantity() * shippingPerCase;
 
         double price = priceData.getBasePrice() - discount + shippingCost;
         return price;
