@@ -7,7 +7,8 @@ public class ProductService {
         double discount = Math.max(quantity - product.getDiscountThreshold(), 0) * product.getBasePrice() * product.getDiscountRate();
 
         PriceData priceData = new PriceData()
-                .setBasePrice(basePrice);
+                .setBasePrice(basePrice)
+                .setQuantity(quantity);
 
         double price = applyShipping(priceData, quantity, shippingMethod, discount);
 

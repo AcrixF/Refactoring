@@ -9,4 +9,5 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class PriceData {
     private double basePrice;
+    private int quantity;
 }
