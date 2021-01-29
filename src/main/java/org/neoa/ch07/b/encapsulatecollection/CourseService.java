@@ -21,10 +21,8 @@ public class CourseService {
 
     public void addCoursesToPerson(Person person) {
         for (String course: courses) {
-            person.getCourses().add(new Course(course, false));
+            person.addCourse(new Course(course, false));
         }
     }
-
-
 
 }
