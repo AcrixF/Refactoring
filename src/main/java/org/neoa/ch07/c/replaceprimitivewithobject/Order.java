@@ -7,8 +7,8 @@ public class Order {
         this.setPriority(priority);
     }
 
-    public Priority getPriority() {
-        return priority;
+    public String getPriorityValue() {
+        return this.priority.toString();
     }
 
     public void setPriority(String priority) {
