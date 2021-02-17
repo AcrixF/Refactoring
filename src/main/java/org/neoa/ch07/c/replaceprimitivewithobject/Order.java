@@ -1,17 +1,17 @@
 package org.neoa.ch07.c.replaceprimitivewithobject;
 
 public class Order {
-    private String priority;
+    private Priority priority;
 
     public Order(String priority) {
-        this.priority = priority;
+        this.setPriority(priority);
     }
 
-    public String getPriority() {
+    public Priority getPriority() {
         return priority;
     }
 
     public void setPriority(String priority) {
-        this.priority = priority;
+        this.priority = new Priority(priority);
     }
 }
