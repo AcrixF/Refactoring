@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class WaiterServiceTest {
+class WaiterServiceTest {
 
     private final static String HIGH = "high";
     private final static String RUSH = "rush";

@@ -7,8 +7,12 @@ public class Order {
         this.setPriority(priority);
     }
 
+    public Priority getPriority() {
+        return this.priority;
+    }
+
     public String getPriorityValue() {
-        return this.priority.toString();
+        return this.priority.priorityValue();
     }
 
     public void setPriority(String priority) {

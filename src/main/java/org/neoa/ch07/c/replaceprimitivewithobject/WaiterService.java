@@ -5,7 +5,7 @@ public class WaiterService {
     public long summaryOrderPriority(Waiter waiter) {
         return waiter.getOrders()
                 .stream()
-                .filter(order -> order.getPriorityValue().equals("high") || order.getPriorityValue().equals("rush"))
+                .filter(order -> order.getPriority().higherThan(new Priority("normal")))
                 .count();
     }
 
