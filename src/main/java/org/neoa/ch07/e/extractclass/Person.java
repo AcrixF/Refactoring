@@ -3,7 +3,6 @@ package org.neoa.ch07.e.extractclass;
 public class Person {
     private String name;
     private String telephoneNumber;
-    private String officeNumber;
 
     private TelephoneNumber telephoneNumber_;
 
@@ -20,11 +19,11 @@ public class Person {
     }
 
     public String getOfficeNumber() {
-        return officeNumber;
+        return this.telephoneNumber_.getOfficeNumber();
     }
 
     public void setOfficeNumber(String officeNumber) {
-        this.officeNumber = officeNumber;
+        this.telephoneNumber_.setOfficeNumber(officeNumber);
     }
 
     public void setTelephoneNumber(String telephoneNumber) {
