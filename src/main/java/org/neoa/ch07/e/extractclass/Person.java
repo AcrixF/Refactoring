@@ -2,36 +2,34 @@ package org.neoa.ch07.e.extractclass;
 
 public class Person {
     private String name;
-    private String telephoneNumber;
-
-    private TelephoneNumber telephoneNumber_;
+    private TelephoneNumber telephoneNumber;
 
     public Person() {
-        this.telephoneNumber_ = new TelephoneNumber();
+        this.telephoneNumber = new TelephoneNumber();
     }
 
     public String getOfficeAreaCode() {
-        return telephoneNumber_.getOfficeAreaCode();
+        return telephoneNumber.getOfficeAreaCode();
     }
 
     public void setOfficeAreaCode(String officeAreaCode) {
-        this.telephoneNumber_.setOfficeAreaCode(officeAreaCode);
+        this.telephoneNumber.setOfficeAreaCode(officeAreaCode);
     }
 
     public String getOfficeNumber() {
-        return this.telephoneNumber_.getOfficeNumber();
+        return this.telephoneNumber.getOfficeNumber();
     }
 
     public void setOfficeNumber(String officeNumber) {
-        this.telephoneNumber_.setOfficeNumber(officeNumber);
+        this.telephoneNumber.setOfficeNumber(officeNumber);
     }
 
     public void setTelephoneNumber(String telephoneNumber) {
-        this.telephoneNumber = telephoneNumber;
+        this.telephoneNumber.setTelephoneNumber(telephoneNumber);
     }
 
     public String getTelephoneNumber() {
-        return this.telephoneNumber;
+        return this.telephoneNumber.getTelephoneNumber();
     }
 
     public void setName(String name) {
