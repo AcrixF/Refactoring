@@ -3,15 +3,20 @@ package org.neoa.ch07.e.extractclass;
 public class Person {
     private String name;
     private String telephoneNumber;
-    private String officeAreaCode;
     private String officeNumber;
 
+    private TelephoneNumber telephoneNumber_;
+
+    public Person() {
+        this.telephoneNumber_ = new TelephoneNumber();
+    }
+
     public String getOfficeAreaCode() {
-        return officeAreaCode;
+        return telephoneNumber_.getOfficeAreaCode();
     }
 
     public void setOfficeAreaCode(String officeAreaCode) {
-        this.officeAreaCode = officeAreaCode;
+        this.telephoneNumber_.setOfficeAreaCode(officeAreaCode);
     }
 
     public String getOfficeNumber() {
