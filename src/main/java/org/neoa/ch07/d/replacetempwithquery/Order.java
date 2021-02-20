@@ -17,11 +17,18 @@ public class Order {
     }
 
     public double calculatePrice() {
-        double basePrice = this.quantity * this.item.getPrice();
+        return getBasePrice() * getDiscountFactor();
+    }
+
+    private double getDiscountFactor() {
         double discountFactor = 0.98;
-        if (basePrice > 1000) {
+        if (getBasePrice() > 1000) {
             discountFactor -= 0.3;
         }
-        return basePrice * discountFactor;
+        return discountFactor;
+    }
+
+    private double getBasePrice() {
+        return this.quantity * this.item.getPrice();
     }
 }
